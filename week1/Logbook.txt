@@ -16,5 +16,7 @@ Try #2 (gcd)
     x = Greatest Common divisor of leaf and rest to find the point at which they meet interval 
     dividing the branch by x to find out many time that interval exists between the branch
 
+Try #3 (lcm)
+    mistook gcd as lcm earlier 
 - Reflection:
     First try

@@ -6,6 +6,6 @@ class Inchworm
 {
   public:
   int lunchtime(int branch, int rest, int leaf) {
-    return (int) (branch / gcd(rest, leaf)) + 1;
+    return (int) (branch / lcm(rest, leaf)) + 1;
   }
 };
