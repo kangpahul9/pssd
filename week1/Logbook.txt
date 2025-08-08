@@ -38,5 +38,7 @@ Try #1(Brute Force)
             i = (i - L + N) % N;
     count++;
 
+    #2 submission did p[0]++; and moved p[i]++ to end of loop 
+
 - Reflection:
     First Try
