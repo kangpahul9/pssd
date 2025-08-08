@@ -4,7 +4,7 @@ using namespace std;
 class PartySeats
 {
 public:
-    vector<string> seating(String[] attendees)
+    vector<string> seating(vector<string> attendees)
     {
         vector<string> boys;
         vector<string> girls;
