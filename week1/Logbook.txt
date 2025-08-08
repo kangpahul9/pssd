@@ -1,0 +1,16 @@
+ Problem: Inchworm.lunchtime(branch, rest, leaf)
+
+First idea:
+  Loop i from 0 to branch step=rest; if (i % leaf == 0) res++
+
+Why it might work:
+  We simulate each landing and check leaf alignment.
+
+Try #1 (brute force):
+  Code:
+    for (int i = 0; i <= branch; i += rest)
+      if (i % leaf == 0) ++res;
+  Result: Works on small tests. Complexity ~ O(branch/rest). Could be slow for big branch when rest is small.
+
+- Reflection:
+    First try
