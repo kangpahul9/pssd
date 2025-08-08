@@ -19,4 +19,24 @@ Try #2 (gcd)
 Try #3 (lcm)
     mistook gcd as lcm earlier 
 - Reflection:
-    First try
+    Was a good question but got through it using simple maths topic
+
+
+Problem: ThrowTheBall 
+First Idea:
+Simulate it in N*M Loop
+Why it might work:
+We storing count for every person in vector
+
+Try #1(Brute Force)
+    Code: 
+     while (p[i] < M)
+        p[i]++;
+        if(p[i] % 2 == 0)
+            i =  (i + L) % N;
+        else
+            i = (i - L + N) % N;
+    count++;
+
+- Reflection:
+    First Try
