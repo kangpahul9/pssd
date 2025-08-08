@@ -12,5 +12,9 @@ Try #1 (brute force):
       if (i % leaf == 0) ++res;
   Result: Works on small tests. Complexity ~ O(branch/rest). Could be slow for big branch when rest is small.
 
+Try #2 (gcl)
+    x = Greatest Common divisor of leaf and rest to find the point at which they meet interval 
+    dividing the branch by x to find out many time that interval exists between the branch
+å
 - Reflection:
     First try
