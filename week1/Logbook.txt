@@ -41,4 +41,11 @@ Try #1(Brute Force)
     #2 submission did p[0]++; and moved p[i]++ to end of loop 
 
 - Reflection:
-    First Try
+    did not find any better way to do it
+
+
+Problem: PartySeats
+First Idea:
+Splitting into two different vectors for both the genders and sorting them then inserting one alternate ones and also saw that number of girls and boys need to be greater than 2 each
+Why it might work:
+It might work as we covered all edgecases
