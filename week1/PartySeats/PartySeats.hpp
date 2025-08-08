@@ -38,4 +38,7 @@ class PartySeats
         {
             result.push_back(girls[cb]);
     }
+}
+    return result;
+ }
 };
