@@ -20,5 +20,6 @@ public:
             }
             count++;
         }
+        return count;
     }
 };
