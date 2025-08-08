@@ -8,11 +8,11 @@ public:
     {
         vector<string> boys;
         vector<string> girls;
-        vector<string> result;
+        vector<string> result; string pos= " ";
         for (auto &i : attendees)
         {
-            string name = i.substr(i.find(" "));
-            string gender = i.substr(i.find(" ") + 1);
+            string name = s.substr(0, pos);
+            string gender = s.substr(pos + 1);
             if (gender == "boy")
             {
                 boys.push_back(name);
@@ -37,7 +37,7 @@ public:
         int cg = 0;
         for (int i = 1; i < attendees.size(); i++)
         {
-            if (i == girls.size() + 1)
+            if (i == attendees.size()/ 2)
             {
                 result.push_back("HOSTESS");
                 continue;
