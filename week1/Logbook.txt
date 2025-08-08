@@ -49,3 +49,6 @@ First Idea:
 Splitting into two different vectors for both the genders and sorting them then inserting one alternate ones and also saw that number of girls and boys need to be greater than 2 each
 Why it might work:
 It might work as we covered all edgecases
+
+Reflection
+I was returning vector earlier now i'm returning string 
