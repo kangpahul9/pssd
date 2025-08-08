@@ -4,11 +4,11 @@ using namespace std;
 class PartySeats
 {
 public:
-    String[] seating(String[] attendees)
+    vector<string> seating(String[] attendees)
     {
         vector<string> boys;
         vector<string> girls;
-        string[] result[attendees.size() + 2];
+        vector<string> result;
         for (auto &i : attendees)
         {
             string name = i.substr(i.find(" "));
@@ -39,17 +39,17 @@ public:
         {
             if (i == girls.size() + 1)
             {
-                result[i] = "HOSTESS";
+                result.push_back("HOSTESS");
                 continue;
             }
             if (i % 2 == 0)
             {
-                result[i] = boys[cb];
+                result.push_back(boys[cb]);
                 cb++;
             }
             else
             {
-                result[i] = girls[cg];
+                result.push_back(girls[cg]);
                 cg++;
             }
         }
