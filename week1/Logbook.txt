@@ -1,3 +1,26 @@
+Problem: CircularLine
+First Idea:
+Use prefix sum to calculate the travel time in one direction between any two stations, then compare it with the total line time to decide which direction is faster.
+
+Why it might work:
+Prefix sums make it easy to compute the distance between any two points in O(1) time.  
+
+Try #1 (Prefix Sum + O(n^2) brute force)
+    Code:
+    for (int i = 0; i < n; ++i) {
+        for (int j = i + 1; j <= n; ++j) {
+            int travelTime = prefixSum[j] - prefixSum[i];
+            if (travelTime > totalTime / 2) {
+                ans = max(ans, travelTime);
+            }
+        }
+    }
+
+Reflection:
+It correctly checks both directions and chooses the faster.  
+
+
+
  Problem: Inchworm.lunchtime(branch, rest, leaf)
 
 First idea:
