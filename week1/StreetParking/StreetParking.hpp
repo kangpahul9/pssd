@@ -5,7 +5,7 @@ using namespace std;
 class StreetParking
 {
   public:
-  int freeParks(String street){
+  int freeParks(string street){
     int count = 0;
     int n = street.size();
     for(int i=0;i<n;i++){
