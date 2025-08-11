@@ -98,3 +98,4 @@ Try #1(Brute Force)
 
 - Reflection:
     did not find any better way to do it
+    Changed rules acc to question

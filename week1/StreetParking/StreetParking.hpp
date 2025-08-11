@@ -12,19 +12,10 @@ class StreetParking
         if(street[i]!='-'){
             continue;
         }
-        if(i+1<n && street[i+1]=='B')
-        {
-            continue;
-        }
-        if(i-1>=0 && street[i-1]=='B'){
-            continue;
-        }
-        if(i+1 < n && street[i+1]=='S'){
-            continue;
-        }
-        if(i-1 >=0 && street[i-1]=='S'){
-            continue;
-        }
+        if (i + 1 < n && street[i + 1] == 'B') continue;
+        if (i + 2 < n && street[i + 2] == 'B') continue;
+        if (i - 1 >= 0 && street[i - 1] == 'S') continue;
+        if (i + 1 < n && street[i + 1] == 'S') continue;
         count++;
     }
     return count;
