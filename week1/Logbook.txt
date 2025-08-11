@@ -43,7 +43,6 @@ Try #1(Brute Force)
 - Reflection:
     did not find any better way to do it
 
-
 Problem: PartySeats
 First Idea:
 Splitting into two different vectors for both the genders and sorting them then inserting one alternate ones and also saw that number of girls and boys need to be greater than 2 each
@@ -56,3 +55,46 @@ Now changing function to vector string
 Now i've changed how to get name and string 
 Changing loop to run until n+2 this time
 Finally fixed it
+
+Problem: StreetParking
+First Idea:
+Loop through each position and check if it’s a '-' slot. If yes, then apply all blocking rules:
+- Not 5m or 10m before a bus stop
+- Not 5m before or after a side street
+These checks can be done with simple index lookups (i±1, i±2) with bounds checking.
+
+Why it might work:
+It directly encodes the problem’s rules in order, ensuring each '-' slot is only counted if none of the constraints apply.
+Try #1 (Direct Simulation)
+    Code:
+    for (int i = 0; i < n; ++i) {
+        if (street[i] != '-') continue;
+        if (i + 1 < n && street[i + 1] == 'B') continue;
+        if (i + 2 < n && street[i + 2] == 'B') continue;
+        if (i - 1 >= 0 && street[i - 1] == 'S') continue;
+        if (i + 1 < n && street[i + 1] == 'S') continue;
+        count++;
+    }
+Reflection:
+Main care point was avoiding out-of-bounds errors on i+1, i+2, i-1.
+
+Problem: ThrowTheBall 
+First Idea:
+Simulate it in N*M Loop
+Why it might work:
+We storing count for every person in vector
+
+Try #1(Brute Force)
+    Code: 
+     while (p[i] < M)
+        p[i]++;
+        if(p[i] % 2 == 0)
+            i =  (i + L) % N;
+        else
+            i = (i - L + N) % N;
+    count++;
+
+    #2 submission did p[0]++; and moved p[i]++ to end of loop 
+
+- Reflection:
+    did not find any better way to do it
