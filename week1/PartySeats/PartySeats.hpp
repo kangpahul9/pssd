@@ -8,11 +8,12 @@ public:
     {
         vector<string> boys;
         vector<string> girls;
-        vector<string> result; string pos= " ";
-        for (auto &i : attendees)
+        vector<string> result; 
+        for (const string& s : attendees)
         {
-            string name = i.substr(0, pos);
-            string gender = i.substr(pos + 1);
+            size_t pos = s.rfind(' ');
+            string name = s.substr(0, pos);
+            string gender = s.substr(pos + 1);
             if (gender == "boy")
             {
                 boys.push_back(name);
