@@ -36,9 +36,10 @@ public:
         result.push_back("HOST");
         int cb = 0;
         int cg = 0;
-        for (int i = 1; i < attendees.size(); i++)
+        int total = attendees.size() + 2; 
+        for (int i = 1; i <= total; i++)
         {
-            if (i == attendees.size()/ 2)
+            if (i == total/ 2)
             {
                 result.push_back("HOSTESS");
                 continue;
