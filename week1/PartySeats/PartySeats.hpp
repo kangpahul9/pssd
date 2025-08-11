@@ -37,7 +37,7 @@ public:
         int cb = 0;
         int cg = 0;
         int total = attendees.size() + 2; 
-        for (int i = 1; i <= total; i++)
+        for (int i = 1; i < total; i++)
         {
             if (i == total/ 2)
             {

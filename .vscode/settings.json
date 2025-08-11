@@ -22,6 +22,9 @@
         "unordered_set": "cpp",
         "valarray": "cpp",
         "ranges": "cpp",
-        "stacktrace": "cpp"
+        "stacktrace": "cpp",
+        "__locale": "cpp",
+        "chrono": "cpp",
+        "functional": "cpp"
     }
 }
