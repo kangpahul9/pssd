@@ -11,3 +11,29 @@ Silly syntax errors (sleep issue)
 can't be me repeating these errors 
 no test results available
 again same issue
+
+Tried the second question as it was showing no test results for First and it worked for both
+
+Problem: MooingCows
+
+First Idea:
+Brute force: For each cow, compute the dissatisfaction by looping over all other cows and summing squared distances.
+Why it might work:
+It directly follows the problem definition and is easy to code.
+Then tried to precompute the sums
+
+Reflection:
+Matches all sample outputs.
+
+
+
+Problem: Reppity
+
+First Idea (Brute force with substrings):
+Check every substring of every possible length and see if it appears at least twice without overlapping.
+
+Why it might work:
+The string is at most 50 chars long. Even an O(n³) solution is safe here. Simple exhaustive search guarantees correctness.
+
+Reflection:
+Reverse the order of length search: from n/2 down to 1. The first match is guaranteed to be maximal.
