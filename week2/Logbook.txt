@@ -7,4 +7,5 @@ Force-create a difference if the original was equal (worst case, increase by at 
 
 Reflection:
 Dry ran it and it is working really well on examples
-Silly syntax errors (sleep issue)
+Silly syntax errors (sleep issue) 
+can't be me repeating these errors 
