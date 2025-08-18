@@ -1,9 +1,0 @@
-Problem: ChangingString
-
-First Idea:
-Focus on differences at each position. Changing a character can either:
-Remove a nonzero difference (best case, drop it to 0)
-Force-create a difference if the original was equal (worst case, increase by at least 1).
-
-Reflection:
-Dry ran it and it is working really well on examples
