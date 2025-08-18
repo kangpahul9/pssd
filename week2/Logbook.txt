@@ -63,3 +63,28 @@ Reflection:
 Complexity: O(n/8), trivial for n ≤ 100.
 Key was to try 8-egg cartons first and then check if the leftover works with 6.
 Odd numbers are impossible (since both 6 and 8 are even).
+
+
+Problem: BlackAndRed
+
+First Idea (Simulation):
+For each possible cut, simulate flipping cards one by one and check if red ever exceeds black.
+
+Why it might work:
+The condition “reds never exceed blacks” can be expressed with cumulative sums. This often reduces simulation to one pass with math.
+
+Second Idea (Prefix sums trick):
+
+Assign values: R = +1, B = -1.
+Build cumulative sum array c[i] for the first i cards.
+If cut at position t, new prefix sums relative to cut are:
+c[t+m]−c[t]
+To win, all of these must be ≤ 0.
+That happens exactly when c[t] is a global maximum among all prefix sums.
+
+Why it might work:
+Cutting after the highest cumulative sum ensures no further relative prefix goes positive.
+
+Reflection:
+Elegant O(n) solution via prefix sums.
+Avoids simulating each cut.
