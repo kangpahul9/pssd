@@ -37,3 +37,29 @@ The string is at most 50 chars long. Even an O(n³) solution is safe here. Simpl
 
 Reflection:
 Reverse the order of length search: from n/2 down to 1. The first match is guaranteed to be maximal.
+
+
+Problem: EggCartons
+
+First Idea (Observation):
+We have cartons of size 6 and 8. For any target n, we need to see if n can be expressed as:
+
+6×y+8×x=n
+
+with non-negative integers x, y. Among all such solutions, we want the one with the smallest x + y.
+
+Why it might work:
+This is a classic linear Diophantine problem, but since n ≤ 100, we can brute-force check all possible counts of 8-egg cartons and see if the remainder is divisible by 6.
+
+Try #1 (Brute Force on 8-cartons):
+Loop x = 0 … n/8.
+Compute rem = n - 8*x.
+If rem is non-negative and divisible by 6, compute y = rem/6.
+Track minimum x + y.
+If no solution, return -1.
+
+Reflection:
+
+Complexity: O(n/8), trivial for n ≤ 100.
+Key was to try 8-egg cartons first and then check if the leftover works with 6.
+Odd numbers are impossible (since both 6 and 8 are even).
