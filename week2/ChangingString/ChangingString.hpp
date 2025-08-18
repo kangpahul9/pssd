@@ -6,11 +6,11 @@ class ChangingString
 {
   public:
   int distance(string A, string B, int K) {
-    vector<int> d;
+    vector<int> di;
     int nonZero,sum=0;
     for (int i = 0; i < A.size(); i++)
     {
-        di[i]= abs(A[i].size() - B[i].size());
+        di[i]= abs((int)A[i].size() - (int)B[i].size());
         sum += di[i];
         if (di[i] > 0) nonZero++;
     }
