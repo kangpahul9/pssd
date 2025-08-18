@@ -88,3 +88,18 @@ Cutting after the highest cumulative sum ensures no further relative prefix goes
 Reflection:
 Elegant O(n) solution via prefix sums.
 Avoids simulating each cut.
+
+
+End of Week Summary
+
+Problems covered:
+ChangingString – greedy replacement using sorted diffs.
+MooingCows – algebraic sum of squares with precomputed sums.
+Reppity – longest repeated substring with non-overlap (O(n³)).
+EggCartons – linear Diophantine (6,8) brute force search.
+BlackAndRed – prefix sums trick for optimal cut.
+
+Patterns Observed
+Many TopCoder-style problems are solvable in O(n²) or O(n³) because of small constraints.
+Prefix sums appear again and again to replace nested loops with O(1) queries.
+The “rotate/cut” trick (BlackAndRed) is very general: cut after the maximum cumulative imbalance.
