@@ -25,6 +25,7 @@
         "stacktrace": "cpp",
         "__locale": "cpp",
         "chrono": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "forward_list": "cpp"
     }
 }
