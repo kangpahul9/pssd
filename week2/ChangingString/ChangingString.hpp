@@ -5,7 +5,7 @@ using namespace std;
 class ChangingString
 {
   public:
-  int distance(vector<string> A, vector<string> B, int K) {
+  int distance(string A, string B, int K) {
     vector<int> d;
     int nonZero,sum=0;
     for (int i = 0; i < A.size(); i++)
