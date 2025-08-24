@@ -7,6 +7,7 @@ Why it might work:
 It seemed natural that since bandwidth is shared, summing times and dividing by bandwidth would give a weighted average. 
 
 Try #2 (File Size Calculation)
+
 Why it might work:
 Each file’s contribution is proportional to its size, and dividing total size by total bandwidth gives the actual finishing time.
 
@@ -54,3 +55,25 @@ It also always returned -1 because the ans update logic wasn’t consistent.
 With DFS/backtracking, every possible placement of '+' is tested.
 Final complexity is fine since length ≤ 10.
 Changed int to long long for vals and nums as it was not working
+
+
+Sorry forgot logbook for last question 
+
+
+Problem: StrangeComputer
+
+First Idea:
+Since the memory starts as all 0s, every time the target string switches from 0 to 1 or from 1 to 0, we’ll need to perform an operation. If the very first bit is 1, then we need one operation right at the start to flip everything to 1.
+
+Why it might work:
+The computer’s operation changes a suffix (from some position to the end) to a single value. That means each “transition” in the target string corresponds directly to one required flip. This reduces the problem to counting transitions in the string.
+Reflection:
+The key simplification was realizing we don’t need to simulate the actual bit flips—just count how many times the desired string switches value. Initialize with 1 if the first bit is 1.
+
+Weekly Reflection:
+This week I worked on four problems — DownloadingFiles, AzimuthMonitoring, QuickSums, and StrangeComputer. Each one highlighted a different type of thinking: data modeling, modular arithmetic, recursion/backtracking, and transition counting.
+Across the four problems, I learned the importance of modeling problems correctly:
+DownloadingFiles → think in terms of size not time.
+AzimuthMonitoring → modular arithmetic simplifies rotations.
+QuickSums → DFS is viable for small inputs; greedy shortcuts may miss solutions.
+StrangeComputer → sometimes full simulation isn’t needed; just count transitions.
