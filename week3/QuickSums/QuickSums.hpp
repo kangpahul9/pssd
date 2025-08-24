@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 #include <numeric>
+#include <climits>
+
 using namespace std;
 
 class QuickSums
