@@ -24,3 +24,32 @@ Turning is cumulative, and all instructions are rotations in degrees. Using modu
 
 Reflection:
 This problem is essentially about string parsing plus modular arithmetic. The challenge was handling both the fixed commands (LEFT, RIGHT, TURN AROUND) and the variable commands (LEFT x, RIGHT x). Using rfind("LEFT ",0) and rfind("RIGHT ",0) made parsing simple. The modulo trick ((deg ± x) + 360) % 360 handled negative values safely.
+
+
+Problem: QuickSums
+
+First Idea:
+Try to split the string at different positions and compute all possible sums.
+Each substring is converted to a number.
+We explore all partitions recursively (DFS).
+Track additions as we go (an addition whenever we join substrings with '+').
+
+Why it might work:
+Brute-forcing all splits guarantees we won’t miss a valid partition. Since string length ≤ 10, at most 
+
+Try #1 (Greedy / Prefix)
+Idea: try splitting based on some prefix strategy, but couldn’t ensure all partitions were covered.
+Failed because skipping some partitions misses valid sums.
+
+Try #2 (DFS with vector<int> storage)
+At each step, form substring numbers[index..i].
+Add it to current sum and recurse.
+If sum == target at the end, update ans.
+
+Reflection:
+
+My earlier approach with vector<int> nums and accumulate was incorrect:
+It tried to partition only at fixed lengths (n/i+1), skipping many valid cases.
+It also always returned -1 because the ans update logic wasn’t consistent.
+With DFS/backtracking, every possible placement of '+' is tested.
+Final complexity is fine since length ≤ 10.
