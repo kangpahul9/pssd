@@ -10,7 +10,7 @@ class QuickSums
 {
 public:
     int ans=INT_MAX;
-    void dfs(const string &numbers, int index, int sum, int target, int additions, vector<int> &nums) {
+    void dfs(const string &numbers, int index, int sum, int target, int additions, vector<long long> &nums) {
         if (index == numbers.size()) {
             int currentSum = 0;
             for (int x : nums) currentSum += x;
@@ -23,7 +23,7 @@ public:
         string cur = "";
         for (int i = index; i < numbers.size(); i++) {
             cur += numbers[i];
-            int val = stoi(cur);
+            long long val = stoll(cur);
             nums.push_back(val);
             dfs(numbers, i + 1, sum + val, target, (nums.size() - 1), nums);
 
@@ -34,7 +34,7 @@ public:
     int minSums(string numbers, int sum)
     {
         ans = INT_MAX;
-        vector<int> nums;
+        vector<long long> nums;
         dfs(numbers, 0, 0, sum, 0, nums);
         return (ans == INT_MAX) ? -1 : ans;
     }
