@@ -25,6 +25,8 @@
         "stacktrace": "cpp",
         "__locale": "cpp",
         "chrono": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "format": "cpp",
+        "__bit_reference": "cpp"
     }
 }
