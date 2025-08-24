@@ -53,3 +53,4 @@ It tried to partition only at fixed lengths (n/i+1), skipping many valid cases.
 It also always returned -1 because the ans update logic wasn’t consistent.
 With DFS/backtracking, every possible placement of '+' is tested.
 Final complexity is fine since length ≤ 10.
+Changed int to long long for vals and nums as it was not working
