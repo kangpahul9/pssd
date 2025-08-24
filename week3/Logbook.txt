@@ -1,0 +1,26 @@
+Problem: DownloadingFiles
+
+First Idea:
+Store each file’s speed and time separately, then try to average the times over the total bandwidth.
+
+Why it might work:
+It seemed natural that since bandwidth is shared, summing times and dividing by bandwidth would give a weighted average. 
+
+Try #2 (File Size Calculation)
+Why it might work:
+Each file’s contribution is proportional to its size, and dividing total size by total bandwidth gives the actual finishing time.
+
+Reflection:
+At first, I tried summing times, but that was wrong since the total isn’t additive in that way. The correct approach was to model the real resource (bandwidth). The trick was to think in terms of total data instead of just individual times.
+
+
+Problem: AzimuthMonitoring
+
+First Idea:
+Keep track of the current degree (starting at 0). For each instruction, update the degree based on the command. Use modulo 360 to keep the value within 0–359.
+
+Why it might work:
+Turning is cumulative, and all instructions are rotations in degrees. Using modular arithmetic ensures the angle always wraps correctly.
+
+Reflection:
+This problem is essentially about string parsing plus modular arithmetic. The challenge was handling both the fixed commands (LEFT, RIGHT, TURN AROUND) and the variable commands (LEFT x, RIGHT x). Using rfind("LEFT ",0) and rfind("RIGHT ",0) made parsing simple. The modulo trick ((deg ± x) + 360) % 360 handled negative values safely.

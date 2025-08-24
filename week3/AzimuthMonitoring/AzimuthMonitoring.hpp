@@ -32,15 +32,3 @@ public:
         return deg;
     }
 };
-
-int main() {
-    AzimuthMonitoring A;
-
-    cout << A.getAzimuth({"RIGHT"}) << "\n"; // 90
-    cout << A.getAzimuth({"LEFT", "LEFT", "TURN AROUND"}) << "\n"; // 0
-    cout << A.getAzimuth({"LEFT 5","RIGHT 10","LEFT 15","RIGHT 20","LEFT 25","RIGHT 30","LEFT 35","RIGHT 40"}) << "\n"; // 20
-    cout << A.getAzimuth({"RIGHT 59","RIGHT","RIGHT","HALT","LEFT","LEFT","LEFT"}) << "\n"; // 239
-    cout << A.getAzimuth({"TURN AROUND","HALT","LEFT 5","HALT","LEFT 5","HALT"}) << "\n"; // 180
-    cout << A.getAzimuth({"LEFT","LEFT","LEFT","LEFT","LEFT","HALT"}) << "\n"; // 270
-    return 0;
-}
