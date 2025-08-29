@@ -1,0 +1,67 @@
+Problem : MagicSpell
+
+First Idea :
+I tried to create a new string containing only the A and Z characters, while setting all non-A/Z characters to '0' and storing them in another string. Then I planned to reverse the string of A and Z characters, and wherever result[i] = '0', I would insert back the original non-A/Z characters.
+Why it might Work :
+By separating A/Z from the other characters, I could reverse only the important part (the spell characters) while leaving the rest of the string unchanged.
+Try (#1):
+Let’s give it a try on Gradescope.
+Try (#2):
+Instead of storing all characters with placeholders, I changed my method to store just the A and Z characters, then reversed them and placed them back in their original positions.
+Reflection :
+The first attempt failed because I mistakenly reversed the entire string instead of just the A/Z subsequence. Once I fixed that in attempt 2, the code worked. The mistake was mainly a misinterpretation of the problem.
+
+
+
+Problem : RugSizes
+First Idea :
+I thought of checking every possible pair (i, j) with two loops where i * j == area. The condition was that i and j must not both be even unless they are equal.
+Why it might Work :
+By looping through all factors of area, I could count valid rug sizes while excluding duplicates and invalid even–even pairs.
+Try (#1):
+Let’s give it a try on Gradescope.
+Try (#2):
+I optimized by running a loop from 1 to area/2. For every i where area % i == 0, I computed j = area / i. If i == j, or if not both are even, I incremented the count.
+Reflection :
+The first attempt failed on Gradescope. I realized I was double-counting in some cases and had not properly enforced the i != j condition. After debugging, I corrected it and fixed the logic. The second attempt is cleaner and more accurate.
+
+
+
+Problem : MonstersValley2
+First Idea :
+I first tried a greedy approach: always bribe a monster if its dread was greater than my current total dread. I also experimented with looking one step ahead (dread[i+1] and comparing prices) to decide whether to bribe now or later.
+Why it might Work :
+Since bribing increases total dread, I thought a greedy rule of “bribe only when necessary” or “choose the cheaper of two consecutive monsters” could minimize the cost.
+Try (#1):
+I did a dry run and it failed.
+Try (#2):
+I switched to a DP approach. I set up a 2D table dp[i][coins] = maximum dread achievable after processing i monsters with exactly coins spent. For each monster:
+Bribe: always possible → pay price[i], add dread[i].
+Don’t Bribe: only possible if current dread ≥ dread[i].
+Reflection :
+The greedy strategy failed because the decision cannot be made by looking only at the next monster. Sometimes bribing earlier (even if not strictly required) helps save coins later. I also found an out-of-bounds issue with dread[i+1]. The DP approach worked much better, since it’s similar to a knapsack problem and explores all valid possibilities.
+
+
+Problem : ImportantTasks
+First Idea :
+I thought of pairing tasks with computers in a greedy way. Since each computer can only do one task, I decided to sort both tasks and computers and then try to assign them in increasing order.
+Why it might Work :
+If the easiest task is always assigned to the weakest available computer that can handle it, stronger computers remain free for harder tasks later. This greedy strategy should maximize the number of tasks executed.
+Try (#1):
+I implemented the solution by sorting both arrays and using two pointers (i for tasks, j for computers). If the current computer can handle the task, I assign it and move both pointers. Otherwise, I move to the next computer.
+Reflection :
+Testing showed this worked correctly and matched the expected outputs. The greedy assignment turned out to be optimal here.
+
+
+Weekly Reflection:
+Overall, this week taught me the balance between greedy and DP. Greedy feels simple and tempting, but it’s not always safe. I need to recognize the problem type early and decide the right approach.
+
+What I Learned :
+Misunderstanding the problem statement is a common source of errors (MagicSpell taught me this).
+Careful condition checks are important (RugSizes reminded me to handle even–even pairs correctly).
+Greedy ≠ always optimal. MonstersValley2 was the key learning experience: when choices affect future feasibility, DP is often the answer.
+Greedy can still be optimal when the structure is simple, like task assignment in ImportantTasks.
+
+What I Could Improve :
+Spend more time planning before coding, especially for problems that look suspiciously like knapsack.
+Double-check for off-by-one errors and out-of-bounds indexing (e.g., when I used dread[i+1] carelessly).
