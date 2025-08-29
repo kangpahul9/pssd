@@ -13,9 +13,17 @@ public:
         {
             for (int j = 1; j <= area/2; j++)
             {
-                if (i * j == area && (i%2==0 && j%2==0))
+                if (i * j == area)
                 {
-                    count++;
+                    if(i%2==0 && j%2==0){
+                        if (i==j){
+                        count++;
+                    }
+                    else{
+                    continue;}}
+                    else{
+                        count++;
+                    }
                 }
             }
             
