@@ -8,25 +8,21 @@ class RugSizes
 public:
     int rugCount(int area)
     {
-        int count = 0;
-        for (int i = 1; i <= area; i++)
+        int count = 0;int j=0;
+        for (int i = 1; i <= area/2; i++)
         {
-            for (int j = 1; j <= area/2; j++)
+            if (area%i == 0)
             {
-                if (i * j == area)
+                j=area/i;
+                if (i==j)
                 {
-                    if(i%2==0 && j%2==0){
-                        if (i==j){
-                        count++;
-                    }
-                    else{
-                    continue;}}
-                    else{
-                        count++;
-                    }
+                    count++;
+                }
+                if (i%2 != 0 && j%2 !=0 )
+                {
+                    count++;
                 }
             }
-            
         }
         return count;
     }
