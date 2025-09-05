@@ -80,3 +80,34 @@ Then return maxIndex
 Reflection:
 Initial version had a bug — I used `if` and then another `if` instead of `else if`, which made the tie check run even after updating max. Also mistakenly initialized maxIndex with INT_MIN, which is unsafe when indexing.
 Silly mistake forgot a semicolon
+
+
+Problem: RunLengthEncoding
+
+First Idea:
+Scan the string left to right. If a digit is found, accumulate it into currNumber. 
+When a letter is found, pair it with either:
+- currNumber (if digits were seen before it)
+- 1 (if no digits were seen, i.e., currNumber == 0)
+Store letters and numbers in vectors, then expand them at the end.
+
+Why it might work:
+Run-length encoding always follows the pattern: [number][letter].
+Numbers can be omitted (default = 1). Using a running currNumber lets us handle multi-digit numbers like 21Z or 123A. 
+Expansion is straightforward: append the letter numbers[i] times to result. 
+Add a running sum to check if decoded length > 50 and return "TOO LONG" early.
+
+Try #1:
+- Parse string character by character
+- If digit: currNumber = currNumber * 10 + (c - '0')
+- If letter: 
+    characters.push_back(c);
+    numbers.push_back(currNumber == 0 ? 1 : currNumber);
+    currNumber = 0;
+    sum += numbers.back();
+    if sum > 50 → return "TOO LONG"
+- After loop, expand pairs into result string
+
+Reflection:
+Worked fine on dry runs like "4A3BC2DE" and "50A".
+Initially tried checking text[i-1] to detect missing numbers, but simplified it by using currNumber == 0 instead. 
