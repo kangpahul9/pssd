@@ -38,7 +38,7 @@ public:
                     }
                     else
                     {
-                        continue
+                        continue;
                     }
                 }
                 else
