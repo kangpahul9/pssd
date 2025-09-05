@@ -111,3 +111,4 @@ Try #1:
 Reflection:
 Worked fine on dry runs like "4A3BC2DE" and "50A".
 Initially tried checking text[i-1] to detect missing numbers, but simplified it by using currNumber == 0 instead. 
+Changed sum and currNumber from int to long long
