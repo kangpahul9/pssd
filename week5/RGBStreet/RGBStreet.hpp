@@ -27,7 +27,7 @@ public:
             dp[i][1] = cost[i][1] + min(dp[i-1][0], dp[i-1][2]); // paint green
             dp[i][2] = cost[i][2] + min(dp[i-1][0], dp[i-1][1]); // paint blue
         }
-        int answer = min(dp[n-1][0], dp[n-1][1], dp[n-1][2]);
+        int answer = min(dp[n-1][0], min(dp[n-1][1], dp[n-1][2]));
         return answer;
     }
 };

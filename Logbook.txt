@@ -140,6 +140,8 @@ Reflection:
 The DP formulation eliminated the need for checking conditions like dp[i][j] != dp[i-1][j].
 The base case was the key missing piece. 
 After fixing that, the solution matched all sample outputs and is efficient for n ≤ 20.
+I thought i've done it and again a silly error of min function.
+
 
 Weekly Reflection:
 Overall, this week reinforced the importance of setting correct base cases, handling edge conditions, and knowing when to use DP instead of brute force. Most of my first attempts were close, but small oversights (like wrong modulo, unsafe indexing, or overflow) caused issues. Writing things out in the logbook helped me see patterns in my mistakes.
