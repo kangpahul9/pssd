@@ -8,7 +8,7 @@ public:
         int count = 0;
         for (int i = min; i <=max; i++)
         {
-           if (factor%i)
+           if (i%factor==0)
            {
             count++;
            }

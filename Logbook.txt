@@ -1,0 +1,20 @@
+Problem : Multiples
+
+First Idea:
+Loop from min to max and count how many numbers are divisible by factor using i % factor == 0.
+
+Why it might work:
+It directly checks every number in the range. Simple, easy to implement, guaranteed correct.
+
+Try #1 (Loop)
+for (int i = min; i <=max; i++)
+        {
+           if (i%factor==0)
+           {
+            count++;
+           }
+        }
+
+Reflection:
+Works fine for small ranges
+Small error it should be i % factor
