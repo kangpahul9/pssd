@@ -18,3 +18,64 @@ for (int i = min; i <=max; i++)
 Reflection:
 Works fine for small ranges
 Small error it should be i % factor
+
+
+Problem: Barbecue
+
+First Idea:
+Keep track of two things for each family member:
+- votesFor[i] = how many times member i was voted against
+- votesBy[i] = how many times member i voted
+This way, one loop over voter[] and excluded[] can fill both arrays.
+
+Why it might work:
+The rules say:
+1. Person with the most votes against is excluded.
+2. If tied, the one who voted the most is excluded.
+3. If still tied, the smallest index is excluded.
+With votesFor and votesBy, all tie-breaking conditions can be checked.
+
+Try #1(Store & Loop with simple nested if statements):
+Get no. of votes by each voter and no. of votes against each voter
+for (int i = 0; i < voter.size(); i++)
+        {
+            votesBy[voter[i]]++;
+            votesFor[excluded[i]]++;
+        }
+
+Compare using nested if statements and check for each value by looping over n 
+for (int i = 0; i < n; i++)
+        {
+            if (votesFor[i] > maxValue)
+            {
+                maxValue = votesFor[i];
+                maxIndex = i;
+            }
+            else if (votesFor[i] == maxValue)
+            {
+                if (votesBy[i] > votesBy[maxIndex])
+                {
+                    maxValue = votesFor[i];
+                    maxIndex = i;
+                }
+                else if (votesBy[i] == votesBy[maxIndex])
+                {
+                    if (i < maxIndex)
+                    {
+                        maxValue = votesFor[i];
+                        maxIndex = i;
+                    }
+                    else
+                    {
+                        continue
+                    }
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+Then return maxIndex
+Reflection:
+Initial version had a bug — I used `if` and then another `if` instead of `else if`, which made the tie check run even after updating max. Also mistakenly initialized maxIndex with INT_MIN, which is unsafe when indexing.

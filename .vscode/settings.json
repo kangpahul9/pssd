@@ -27,6 +27,13 @@
         "chrono": "cpp",
         "functional": "cpp",
         "format": "cpp",
-        "__bit_reference": "cpp"
+        "__bit_reference": "cpp",
+        "limits": "cpp",
+        "ratio": "cpp",
+        "barrier": "cpp",
+        "latch": "cpp",
+        "semaphore": "cpp",
+        "algorithm": "cpp",
+        "random": "cpp"
     }
 }
