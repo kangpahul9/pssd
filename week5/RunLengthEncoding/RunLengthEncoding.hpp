@@ -8,7 +8,7 @@ public:
         int n=text.size();
         char c;
         vector<char>characters;
-        vector<int>numbers; int currNumber=0,sum=0;
+        vector<int>numbers; long long currNumber=0,sum=0;
         string result;
 
         for (int i = 0; i < n; i++)
@@ -30,7 +30,7 @@ public:
             else{
                 currNumber=currNumber*10 + (c-'0');
             }
-            if (sum > 50)
+            if (sum > 50 || currNumber > 50)
             {
                return "TOO LONG";
             }
