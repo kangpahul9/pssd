@@ -94,7 +94,7 @@ public:
         for (int i = 0; i < n; i++)
         {
             if (lastIndex[sequence[i]] == i)
-                result.push_back(sequence[i]); // only keep rightmost occurrence
+                result.push_back(sequence[i]); 
         }
         return result;
     }
