@@ -45,3 +45,21 @@ for (int i = 0; i < n; i++) {
 Reflection:
 The boolean array approach didn’t cleanly enforce rightmost only.
 Needed a simpler way to map each value to its last position.
+
+
+Problem: FewestFactors
+
+First Idea:
+We’re given a set of digits and need to form a number with:
+The fewest factors (divisors).
+If multiple numbers have the same number of factors, choose the smallest number.
+
+Brute force idea:
+Try every permutation of the digits.
+For each number, count its factors.
+Track the best candidate.
+
+Why it might work:
+Brute force works here because digit count is small (≤ 9 or 10).
+next_permutation guarantees we try all arrangements.
+Tie-breaking is simple with an if check on factor count, then numeric value.
