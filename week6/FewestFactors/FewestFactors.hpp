@@ -3,6 +3,7 @@
 #include <string>
 #include <cmath>
 #include <algorithm>
+#include <climits>
 using namespace std;
 class FewestFactors
 {
