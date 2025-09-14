@@ -1,0 +1,47 @@
+Problem: DerivativeSequence
+
+First Idea:
+Repeatedly compute the "derivative" of the sequence.
+Replace each element with the difference between the next and the current.
+After one pass, the sequence becomes one element shorter.
+Do this n times.
+
+Why it might work:
+The problem definition says each "derivative" reduces the sequence by 1, and each element is just the difference of two consecutive elements. Repeating n times should directly give the answer.
+
+Try #1 (Nested Loops):
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < a.size()-1; j++) {
+        a[j] = a[j + 1] - a[j];
+    }
+    a.pop_back();
+}
+
+Reflection:
+Bug: for (int j = 0; j < a.size(); j++). It accesses a[j+1] when j == a.size()-1, which is out-of-bounds. So run till j < a.size()-1.
+After each full pass, call a.pop_back() to shrink array by one.
+Tested on sample: worked fine after fixing bounds.
+
+
+
+Problem: SimpleDuplicateRemover
+
+First Idea:
+We need to remove duplicates from a sequence of integers, but keep only the rightmost occurrence of each element.
+Store the last index where each number occurs.
+Then build the result by including only those elements at their last position.
+
+Why it might work:
+If we know the last occurrence of every element, then while scanning again, we only keep it if it’s the last time it appears. This way duplicates earlier in the sequence get skipped automatically.
+
+Try #1 (Boolean array):
+Initially attempted with a boolean digits[1000] and index vector, but logic became messy and didn’t guarantee rightmost order properly.
+
+Try #2 (Last Index Array):
+for (int i = 0; i < n; i++) {
+    if (lastIndex[sequence[i]] == i)
+        result.push_back(sequence[i]);
+}
+Reflection:
+The boolean array approach didn’t cleanly enforce rightmost only.
+Needed a simpler way to map each value to its last position.
