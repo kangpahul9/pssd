@@ -19,7 +19,7 @@ private:
    
 public:
     int number(vector<int> digits) {
-        sort(digits.begin(), digits.end()); // for next_permutation
+        sort(digits.begin(), digits.end()); 
         int bestNum = INT_MAX;
         int bestFactors = INT_MAX;
 
