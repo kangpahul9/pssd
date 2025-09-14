@@ -80,9 +80,11 @@ public:
         }
         int res = INT_MAX / 2;
         long long num = 0;
-        for (int i = idx; i < s.size(); i++){
+        for (int i = idx; i < s.size(); i++)
+        {
             num = num * 10 + (s[i] - '0');
-            if (num > target) break;
+            if (num > target)
+                break;
             int next = dfs(s, i + 1, target - num);
             if (next != INT_MAX / 2)
             {
@@ -93,19 +95,107 @@ public:
                     res = min(res, next);
             }
         }
-            return res;
-
+        return res;
     }
-};int main()
+};
+
+class SimpleCompressor
 {
-    Arrows solver;
+public:
+    string uncompress(string data)
+    {
+        int i = 0;
+        return recursion(data, i);
+        ;
+    }
+    string recursion(const string &data, int &i)
+    {
+        string result = "";
+        int n = data.size();
+
+        while (i < n && data[i] != ']')
+        {
+            if (isalpha(data[i]))
+            {
+                // normal letter
+                result += data[i];
+                i++;
+            }
+            else if (data[i] == '[')
+            {
+                // enter bracket
+                i++;
+                int repeat = data[i] - '0';         // single digit guaranteed
+                i++;                                // move past digit
+                string inside = recursion(data, i); // expand inside
+                i++;                                // skip ']'
+                for (int k = 0; k < repeat; k++)
+                {
+                    result += inside;
+                }
+            }
+            else
+            {
+                i++; // safety skip
+            }
+        }
+
+        return result;
+    }
+};
+
+class FewestFactors
+{
+private:
+   int numberOfFactors(int number){
+    int count;
+    for (int i = 0; i < number/2; i++)
+    {
+        if (number%i==0)
+        {
+            count++;
+        }
+        
+    }
+    return count;
+   }
+
+   
+public:
+    int number(vector<int> digits) {
+        sort(digits.begin(), digits.end()); // for next_permutation
+        int bestNum = INT_MAX;
+        int bestFactors = INT_MAX;
+
+        do {
+            int num = 0;
+            for (int d : digits) {
+                num = num * 10 + d;
+            }
+
+            int f = numberOfFactors(num);
+            if (f < bestFactors || (f == bestFactors && num < bestNum)) {
+                bestFactors = f;
+                bestNum = num;
+            }
+        } while (next_permutation(digits.begin(), digits.end()));
+
+        return bestNum;
+    }
+};
+
+
+
+int main()
+{
+    Arrows s;
 
     // Test Arrows
     cout << "Arrows Tests:" << endl;
-    cout << "Test 0: " << solver.longestArrow("<--->--==>") << " (Expected: 4)" << endl;
-    cout << "Test 1: " << solver.longestArrow("<<<<<<<<<<") << " (Expected: 1)" << endl;
-    cout << "Test 2: " << solver.longestArrow("----==-") << " (Expected: -1)" << endl;
-    cout << "Test 3: " << solver.longestArrow("<----=====>") << " (Expected: 6)" << endl;
+    cout << "Test 0: " << s.longestArrow("<--->--==>") << " (Expected: 4)" << endl;
+    cout << "Test 1: " << s.longestArrow("<<<<<<<<<<") << " (Expected: 1)" << endl;
+    cout << "Test 2: " << s.longestArrow("----==-") << " (Expected: -1)" << endl;
+    cout << "Test 3: " << s.longestArrow("<----=====>") << " (Expected: 6)" << endl;
 
     QuickSums qs;
 
@@ -117,6 +207,34 @@ public:
     cout << "Test 3: " << qs.minSums("99999", 100) << " (Expected: -1)" << endl;
     cout << "Test 4: " << qs.minSums("382834", 100) << " (Expected: 2)" << endl;
     cout << "Test 5: " << qs.minSums("9230560001", 71) << " (Expected: 4)" << endl;
+
+    SimpleCompressor sc;
+
+    cout << sc.uncompress("C[6AB]C") << endl;               // CABABABABABABC
+    cout << sc.uncompress("C[2[3AB]]C") << endl;            // CABABABABABABC
+    cout << sc.uncompress("CO[1N]TEST") << endl;            // CONTEST
+    cout << sc.uncompress("[2[2AB]]") << endl;              // ABABABAB
+    cout << sc.uncompress("AAAAAAAAAAAAAAAAAAAAA") << endl; // AAAAAAAAAAAAAAAAAAAAA
+
+    FewestFactors solver;
+
+    vector<int> test0 = {1, 2};
+    cout << "Test 0: " << solver.number(test0) << " (Expected: 21)" << endl;
+
+    vector<int> test1 = {6, 0};
+    cout << "Test 1: " << solver.number(test1) << " (Expected: 6)" << endl;
+
+    vector<int> test2 = {4, 7, 4};
+    cout << "Test 2: " << solver.number(test2) << " (Expected: 447)" << endl;
+
+    vector<int> test3 = {1, 3, 7, 9};
+    cout << "Test 3: " << solver.number(test3) << " (Expected: 1973)" << endl;
+
+    vector<int> test4 = {7, 5, 4, 3, 6};
+    cout << "Test 4: " << solver.number(test4) << " (Expected: 36457)" << endl;
+
+    vector<int> test5 = {1, 2, 4};
+    cout << "Test 5: " << solver.number(test5) << " (Expected: 241)" << endl;
 
     return 0;
 }
