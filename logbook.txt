@@ -97,31 +97,6 @@ Counts matches even when both mother and father share the gene.
 Correctly handles mandatory contributions when child[j] ≠ mother[j].
 
 
-
-Problem : UnsealTheSafe
-
-First Idea:
-Use recursion + memoization or DP to count the number of sequences of length N.
-
-Why it might work:
-At each step, the number of ways to reach digit d of length len depends only on the counts from its neighbors at length len-1.
-
-Try #1 (Recursive):
-Thought of using recursion with memoization:
-
-Try #2 (Bottom-up DP):
-Build a DP table where dp[len][d] = number of ways to form a sequence of length len ending at digit d.
-Initialize dp[1][d] = 1 for all digits (base case).
-for (int len=2; len<=N; len++)
-    for (int d=0; d<=9; d++)
-        for (int nb : neighbors[d])
-            dp[len][d] += dp[len-1][nb];
-Finally, sum all dp[N][d] to get the answer.
-
-Reflection:
-Recursive approach was less efficient, so switched to iterative DP.
-Learned that bottom-up DP is often cleaner than recursion for sequence-counting problems.
-
 Problem: BlackAndWhiteSolitaire
 
 First Idea:
@@ -152,7 +127,6 @@ What I Learned:
 Brute force is often safe when constraints are small (TimeTravellingCellar).
 Index tracking is powerful for removing duplicates (SimpleDuplicateRemover).
 String/array condition checking must be systematic (PaternityTest).
-Dynamic programming is a strong tool for sequence counting problems (UnsealTheSafe).
 Counting consecutive conflicts and using simple arithmetic can efficiently solve pattern problems (BlackAndWhiteSolitaire).
 
 What I Could Improve:
@@ -160,5 +134,4 @@ Always initialize counters or accumulators to avoid undefined results.
 Watch out for division by zero or invalid accesses in loops.
 Be extra careful with loop ranges (DerivativeSequence showed this).
 Spend time clarifying the rules in condition-heavy problems before coding.
-Recognize when a DP formulation is cleaner and more scalable than recursion (lesson from UnsealTheSafe).
 Recognize when a formulaic or pattern-based approach is cleaner and more scalable than brute force recursion (lesson from BlackAndWhiteSolitaire).

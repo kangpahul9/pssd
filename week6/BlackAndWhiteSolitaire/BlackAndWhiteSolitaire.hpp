@@ -4,15 +4,30 @@ class BlackAndWhiteSolitaire {
 public:
     int minimumTurns(string cardFront) {
         int n=cardFront.size();
-        int count=0;
-       
-        for (int i = 0; i < n-1; i++)
+        int countBcorrect=0;
+        int countWcorrect=0;
+        char correctB,correctW;
+        if (cardFront[0]=='B')
         {
-            if (cardFront[i]==cardFront[i+1])
+            for (int i = 0; i < n-1; i++)
+        {
+            if (cardFront[i]=='B'&&i%2==0)
             {
-                count++;
+                countBcorrect++;
             }
         }
-        return count%2==0 ? count/2 : count/2+1;
+        }
+        
+        if (cardFront[0]=='W')
+        {
+            for (int i = 0; i < n-1; i++)
+        {
+            if (cardFront[i]=='W'&&i%2==0)
+            {
+                countWcorrect++;
+            }
+        }
+        }
+        return min(countBcorrect,countWcorrect);
     }
 };
