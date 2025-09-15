@@ -67,7 +67,7 @@ Tie-breaking is simple with an if check on factor count, then numeric value.
 Reflection (Bug):
 count wasn’t initialized. So got undefined values.
 Loop started from i = 0. So division by zero error.
-
+I did not make function public.
 
 Problem: TimeTravellingCellar
 
