@@ -122,6 +122,28 @@ Reflection:
 Recursive approach was less efficient, so switched to iterative DP.
 Learned that bottom-up DP is often cleaner than recursion for sequence-counting problems.
 
+Problem: BlackAndWhiteSolitaire
+
+First Idea:
+Count consecutive cards with the same color. Every time two consecutive cards are the same, at least one flip is needed. Since a single flip can fix two consecutive same-color pairs (by flipping the middle card in BB → BWB), divide the total consecutive-pairs count by 2.
+
+Why it might work:
+We only need to check adjacent cards.
+Each flip can resolve two problematic pairs.
+This method guarantees a minimum number of flips because we handle overlapping pairs efficiently.
+
+Try #1 (Consecutive Pairs Count):
+int count = 0;
+for (int i = 0; i < n-1; i++) {
+    if (cardFront[i] == cardFront[i+1]) count++;
+}
+return count % 2 == 0 ? count/2 : count/2 + 1;
+
+Reflection:
+Counting same-color adjacent pairs works well and is simple.
+Dividing by 2 accounts for the fact that one flip can fix two pairs.
+Adding +1 for odd counts handles leftover single pairs.
+
 Weekly Reflection
 
 This week I worked across problems involving brute force, arrays, dynamic programming, and condition-heavy logic.
@@ -131,6 +153,7 @@ Brute force is often safe when constraints are small (TimeTravellingCellar).
 Index tracking is powerful for removing duplicates (SimpleDuplicateRemover).
 String/array condition checking must be systematic (PaternityTest).
 Dynamic programming is a strong tool for sequence counting problems (UnsealTheSafe).
+Counting consecutive conflicts and using simple arithmetic can efficiently solve pattern problems (BlackAndWhiteSolitaire).
 
 What I Could Improve:
 Always initialize counters or accumulators to avoid undefined results.
@@ -138,3 +161,4 @@ Watch out for division by zero or invalid accesses in loops.
 Be extra careful with loop ranges (DerivativeSequence showed this).
 Spend time clarifying the rules in condition-heavy problems before coding.
 Recognize when a DP formulation is cleaner and more scalable than recursion (lesson from UnsealTheSafe).
+Recognize when a formulaic or pattern-based approach is cleaner and more scalable than brute force recursion (lesson from BlackAndWhiteSolitaire).
