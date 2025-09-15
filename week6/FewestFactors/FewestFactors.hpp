@@ -18,8 +18,8 @@ public:
     int number(vector<int> digits)
     {
         sort(digits.begin(), digits.end());
-        int bestNum = INT_MAX;
-        int bestFactors = INT_MAX;
+        int bestNum;
+        int bestFactors;
 
         do
         {
