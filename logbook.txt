@@ -88,3 +88,50 @@ for (int i = 0; i < n; i++) {
 
 Reflection:
 Added if (i == j) continue; to avoid using the same cellar for both profit and decay.
+
+
+Problem: PaternityTest
+
+First Idea:
+We need to determine which men could possibly be the father of a given child, given the mother's DNA string.
+
+Why it might work:
+Tracking isFather for impossible cases + counting matches (fatherMatches) directly encodes both rules.
+
+Try #1:
+for (int i = 0; i < men.size(); i++) {
+    int fatherMatches = 0;
+    bool isFather = true;
+
+    for (int j = 0; j < n; j++) {
+        if (child[j] == mother[j]) {
+            if (child[j] == men[i][j]) fatherMatches++;
+        } else {
+            if (child[j] == men[i][j]) fatherMatches++;
+            else { isFather = false; break; }
+        }
+    }
+    if (isFather && fatherMatches >= n / 2) indices.push_back(i);
+}
+
+Reflection:
+Counts matches even when both mother and father share the gene.
+Correctly handles mandatory contributions when child[j] ≠ mother[j].
+
+Weekly Reflection
+
+This week I worked across problems involving brute force, permutations, arrays, and condition-heavy logic.
+
+What I Learned:
+
+Brute force is often safe when constraints are small (TimeTravellingCellar, FewestFactors).
+Index tracking is powerful for removing duplicates (SimpleDuplicateRemover).
+Bounds matter: a single off-by-one in DerivativeSequence caused out-of-bounds.
+String/array condition checking must be systematic (PaternityTest).
+
+What I Could Improve:
+
+Always initialize counters (FewestFactors bug).
+Watch out for division by zero when looping factors.
+Be extra careful with loop ranges (DerivativeSequence).
+Spend time clarifying the rules in string/logic problems before coding.
