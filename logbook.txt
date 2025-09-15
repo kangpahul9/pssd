@@ -67,3 +67,24 @@ Tie-breaking is simple with an if check on factor count, then numeric value.
 Reflection (Bug):
 count wasn’t initialized. So got undefined values.
 Loop started from i = 0. So division by zero error.
+
+
+Problem: TimeTravellingCellar
+
+First Idea:
+profit[i] = profit if cellar i is advanced in time.
+decay[j] = loss if cellar j is turned back in time.
+
+Why it might work:
+Brute force is straightforward: just try all (i, j) pairs with i != j.
+
+Try #1 (Double Loop):
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        if (i == j) continue;
+        maxProfit = max(maxProfit, profit[i] - decay[j]);
+    }
+}
+
+Reflection:
+Added if (i == j) continue; to avoid using the same cellar for both profit and decay.
