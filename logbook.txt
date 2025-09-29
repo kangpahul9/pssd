@@ -63,3 +63,32 @@ int maximumPupils(vector<string> seats) {
 
 Reflection:
 The greedy logic works because adjacency is local: once we choose seat i, seat i+1 is unusable anyway, so skipping it is correct.
+
+
+Problem: MinimalDifference
+
+First Idea:
+We need to find a number X between A and B whose digit sum is closest to the digit sum of C.
+If multiple numbers tie, choose the smallest such X.
+
+Why it might work:
+Keep track of the current “best” number using the absolute difference from digitSum(C).
+Checking all numbers in [A, B] is at most 100,001 iterations, well within time limits.
+
+Try #1 (Brute Force with Digit Sum):
+for (int i = A; i <=B; i++)
+    {
+        sumNum = digitSum(i);
+        int diff = abs(sumNum - sumC);
+        if (diff < bestDiff) {
+                bestDiff = diff;
+                bestNum = i;
+            } else if (diff == bestDiff && i < bestNum) {
+                // tie-breaker: smaller number
+                bestNum = i;
+            }
+        }
+        return bestNum;
+
+Reflection:
+Brute force all numbers in [A, B], compute digit sums, track the closest to digitSum(C), and break ties by smaller value.
