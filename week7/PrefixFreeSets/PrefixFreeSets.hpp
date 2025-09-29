@@ -3,26 +3,29 @@ using namespace std;
 class PrefixFreeSets
 {
 public:
-    int maxElements(vector<string> words){
-        int n=words.size();
-        int result=n;string word;
+    int maxElements(vector<string> words)
+    {
+        int n = words.size();
+        int result = 0;
+        string word;
         for (int i = 0; i < n; i++)
         {
-            string word = words[i];
+            bool isPrefix = false;
+
             for (int j = 0; j < n; j++)
             {
-                if (i==j)
-                {
+                if (i == j)
                     continue;
-                }
-                if (words[j].find(word) != std::string::npos )
+                if (words[j].size() >= words[i].size() &&
+                    words[j].substr(0, words[i].size()) == words[i])
                 {
-                    result--;
+                    isPrefix = true;
+                    break;
                 }
             }
+            if (!isPrefix)
+                result++;
         }
         return result;
-        
     }
-
 };
