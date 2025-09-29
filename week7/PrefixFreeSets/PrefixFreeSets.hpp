@@ -5,9 +5,10 @@ class PrefixFreeSets
 public:
     int maxElements(vector<string> words)
     {
+        sort(words.begin(), words.end());
+        words.erase(unique(words.begin(), words.end()), words.end());
         int n = words.size();
         int result = 0;
-        string word;
         for (int i = 0; i < n; i++)
         {
             bool isPrefix = false;
