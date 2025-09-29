@@ -1,0 +1,35 @@
+Problem: FairWorkload
+
+First Idea:
+We need to split filing cabinets (each with a number of folders) into contiguous groups for workers.
+Goal: minimize the maximum workload any worker gets.
+Classic “minimize the maximum” → use binary search on the answer.
+For each candidate workload mid, check feasibility with a greedy pass.
+
+Why it might work:
+The maximum possible workload is the sum of all cabinets (one worker does all).
+The minimum possible workload is the largest single cabinet.
+
+Try #1 (Binary Search with Partition Check):
+while (st<=sum)
+        {
+            mid = st + (sum-st)/2;
+            if (partition(mid,folders,workers))
+            {
+                if (mid<result)
+                {
+                    result = mid;
+                    sum=mid-1;
+                }    
+            }
+            else{
+                st=mid+1;
+            }
+        }
+        return result;
+        
+Reflection:
+
+Initially, I set lower bound = 0, but that allowed impossible workloads smaller than the max element. Fixed to st = max(folders).
+Also fixed infinite loop bug: when infeasible, move st = mid + 1, not st = mid.
+Binary search now cleanly narrows to the minimal feasible workload.

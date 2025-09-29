@@ -26,8 +26,9 @@ public:
         for (int i : folders)
         {
             sum += i;
+            st=max(st,i);
         }
-        while (st<sum)
+        while (st<=sum)
         {
             mid = st + (sum-st)/2;
             if (partition(mid,folders,workers))
@@ -35,11 +36,11 @@ public:
                 if (mid<result)
                 {
                     result = mid;
-                    sum=mid;
+                    sum=mid-1;
                 }    
             }
             else{
-                st=mid;
+                st=mid+1;
             }
         }
         return result;
