@@ -92,3 +92,67 @@ for (int i = A; i <=B; i++)
 
 Reflection:
 Brute force all numbers in [A, B], compute digit sums, track the closest to digitSum(C), and break ties by smaller value.
+
+
+Problem: PrefixFreeSets
+
+First Idea:
+We need the largest subset of words where no word is a prefix of another.
+Natural approach: check each word to see if it’s a prefix of some other word.
+
+Why it might work:
+A word that is a prefix of another cannot be included (otherwise the set breaks prefix-free property).
+
+Try #1 (Nested Loops with Substring Check):
+Initially tried using find() to detect substrings:
+if (words[j].find(word) != string::npos)
+    result--;
+
+Try #2 (Proper Prefix Check):
+if (words[j].size() >= words[i].size() &&
+    words[j].substr(0, words[i].size()) == words[i])
+{
+    isPrefix = true;
+}
+
+Reflection:
+Try 2 correctly checks only the start of the string.
+Count each word that is not a prefix of any other.
+
+
+
+Weekly Reflection :
+
+This week I worked through four problems across different algorithmic patterns:
+
+FairWorkload (binary search + greedy feasibility):
+Learned how to apply binary search on the answer instead of the input data.
+Important to set correct search bounds (max element as lower bound, sum as upper).
+Greedy partitioning is a classic way to check feasibility.
+
+VeryInterestingMovie (greedy scanning):
+Simple row-by-row greedy choice solved the adjacency restriction optimally.
+
+MinimalDifference (brute force with digit sums):
+Brute force is fine with B - A ≤ 100k.
+Practiced writing safe digit-sum helpers.
+
+PrefixFreeSets (string prefix checking):
+Initially confused substring vs prefix — important distinction!
+Learned to carefully use substr to check only the start of the string.
+Confirmed that the problem reduces to simply counting “non-prefix” words.
+
+
+What I Learned:
+
+Binary search on the answer is a versatile tool for “minimize maximum” or “maximize minimum” problems.
+Greedy left-to-right placement works when constraints are purely local (like adjacency).
+Brute force is perfectly acceptable if constraints allow it — don’t overcomplicate.
+Always clarify definitions: substring vs prefix matters a lot in string problems.
+
+
+What I Could Improve:
+
+Double-check definitions before coding (substring vs prefix mistake).
+Add preprocessing (like deduplicating words) explicitly when relevant.
+Be careful with binary search update rules (low = mid+1, high = mid-1) to avoid infinite loops.
