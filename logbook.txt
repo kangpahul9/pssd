@@ -29,7 +29,37 @@ while (st<=sum)
         return result;
         
 Reflection:
-
 Initially, I set lower bound = 0, but that allowed impossible workloads smaller than the max element. Fixed to st = max(folders).
 Also fixed infinite loop bug: when infeasible, move st = mid + 1, not st = mid.
 Binary search now cleanly narrows to the minimal feasible workload.
+
+
+Problem: VeryInterestingMovie
+
+First Idea:
+We need to seat as many students as possible in a theatre.
+Constraint: no two students in the same row can sit in adjacent seats.
+Rows are independent, so solve each row separately and add up the results.
+Strategy: scan left to right in each row; whenever a seat is available (Y), place a student and skip the next seat.
+
+
+Why it might work:
+If a seat is available and we don’t place a student, it cannot help to leave it empty unless it allows a later placement.
+But by taking the first available seat, we guarantee that the skipped seat can’t be used anyway (due to adjacency).
+
+Try #1 (Greedy Scan):
+int maximumPupils(vector<string> seats) {
+    int result = 0;
+    for (string row : seats) {
+        for (int i = 0; i < row.size(); i++) {
+            if (row[i] == 'Y') {
+                result++;
+                i++; 
+            }
+        }
+    }
+    return result;
+}
+
+Reflection:
+The greedy logic works because adjacency is local: once we choose seat i, seat i+1 is unusable anyway, so skipping it is correct.
