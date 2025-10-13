@@ -1,0 +1,77 @@
+Problem: Thimbles
+
+First Idea:
+We start with 3 thimbles labeled 1, 2, and 3.
+A small ball begins under thimble 1.
+We are given a list of swaps (e.g., "1-3" or "2-3") that describe which two thimbles are swapped each time.
+Our task is to determine which thimble the ball ends up under after all swaps are performed.
+
+Initial Thought:
+The simplest way is to simulate the process directly:
+Start with ball = 1.
+For each swap "a-b", if the ball is under a, move it to b;
+if it’s under b, move it to a;
+otherwise do nothing.
+
+Why it might work:
+Each swap only affects the ball’s position if it is currently under one of the swapped thimbles.
+The ball’s position changes deterministically and there are only three possible thimbles, so direct simulation in a single pass is enough.
+No advanced data structure or algorithm is needed — just careful parsing of the swap strings.
+
+Try #1 (Simple Simulation):
+int thimbleWithBall(vector<string> swaps) {
+    int ball = 1;  // starts under thimble 1
+    for (string s : swaps) {
+        int a = s[0] - '0';
+        int b = s[2] - '0';
+        if (ball == a)
+            ball = b;
+        else if (ball == b)
+            ball = a;
+    }
+    return ball;
+}
+
+Reflection:
+This direct simulation approach is both the simplest and most efficient possible — it runs in O(n) for n swaps, and only uses a few integers.
+No need for arrays or extra storage.
+
+
+
+Problem: MatchNumbersEasy
+
+First Idea:
+We are given how many matchsticks are needed to make each digit (0–9).
+With n matchsticks available, we must build the largest possible number (as a string) using any combination of digits.
+
+Initial thought: 
+Try every combination of digits using loops, compute how many matches they cost, and keep track of the largest numeric result.
+We can start with a high-cost digit, subtract its cost, and keep adding cheaper digits as long as matches remain.
+
+Why it might work:
+Each digit consumes a fixed number of matches, and we are free to use any digits in any order.
+By trying digits from highest to lowest, we maximize the leftmost (most significant) digit first.
+Whenever we can still afford a digit’s cost, we append it to the current number.
+We record the largest numeric value found.
+
+
+Try #1 (Nested Loops + While Construction):
+for (int i = matches.size() - 1; i >= 0; i--) {
+    if (matches[i] > n) continue;
+    left = n - matches[i];
+    currMax = i;
+    for (int j = matches.size() - 1; j >= 0; j--) {
+        int tempLeft = left;
+        long long tempNum = currMax;
+        while (tempLeft >= matches[j]) {
+            tempNum = tempNum * 10 + j;
+            maxNumber = max(maxNumber, tempNum);
+            tempLeft -= matches[j];
+        }
+    }
+}
+
+Reflection:
+Originally, I didn’t copy left and currNum inside the loops, which caused incorrect results — previous states were being mutated, and later combinations were skipped.
+Adding local copies (tempLeft, tempNum) fixed that by resetting the match count and number for each new trial.
+I also changed the condition to >= (instead of >) so exact match usage is allowed.
