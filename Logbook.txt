@@ -122,3 +122,53 @@ long dfs(int i, vector<string>& rel, vector<long>& memo) {
 Reflection:
 The recursive DFS approach is clean and effective.
 Each node (employee) is visited only once thanks to memoization.
+
+
+
+Problem: RockStar
+
+First Idea:
+This structure naturally represents transitions between “fast” and “slow” zones, similar to a two-state graph where songs are directed edges.
+
+Why it might work:
+We can’t reorder songs arbitrarily. Transitions follow strict start/end matching rules.
+The album can therefore be built by chaining songs according to their end/start type, starting in the appropriate zone (fast if any fast-start songs exist, otherwise slow).
+
+Try #1 (Case Analysis and Counting Logic):
+ if (ff + fs == 0) {
+            return ss + (sf > 0 ? 1 : 0);
+        }
+
+        if (fs == 0) {
+            return ff;
+        }
+
+        int ans = ff;                
+        ans += 1;                     
+        ans += ss;                    
+        ans += 2 * min(sf, fs - 1);  
+        if (sf >= fs) ans += 1;      
+        return ans;
+
+Reflection:
+The logic captures every way to transition between “fast” and “slow” segments.
+Starting in the fast zone ensures all ff songs are used first.
+Each fs/sf pair allows two extra songs — one in each direction — and leftover transitions are handled by the conditional at the end.
+
+
+
+
+Weekly Reflection:
+This week focused on problems that required different algorithmic mindsets: simulation, dynamic programming, recursion, and transition analysis.
+Thimbles reinforced direct simulation — simple logic often beats over-engineering.
+MatchNumbersEasy highlighted the power of dynamic programming and string manipulation to avoid overflow and maintain ordering.
+CorporationSalary was a clean example of DFS + memoization over a dependency graph.
+RockStar introduced state transitions and careful case-based reasoning, converting a seemingly graph problem into a concise mathematical expression.
+
+
+
+What I Learned:
+Choose the right mental model for each problem (simulation, DP, recursion, or transition counting).
+Edge-case handling (like missing transitions in RockStar or no subordinates in CorporationSalary) must always be built into the main logic.
+DP can often replace brute-force enumeration with clean, optimal solutions.
+Even problems that appear complex can simplify into formulas with proper state reasoning.
