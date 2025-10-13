@@ -74,10 +74,8 @@ for (int i = matches.size() - 1; i >= 0; i--) {
 Reflection:
 Originally, I used integer math (tempNum = tempNum * 10 + j), but that produced wrong results like "200" instead of "210".
 The problem was that numeric concatenation (*10 + j) doesn’t preserve digit order context and breaks for large or variable-length numbers.
-The DP approach fixed every failed case from the earlier nested-loop solution.
-It now correctly handles mixed combinations like "210" and "9876543210".
-Using strings instead of integers removed overflow risks and preserved digit order accurately.
-
+The DP-based approach is both optimal and elegant.
+It transforms the problem into incremental string-building and comparison, which matches exactly how we think of forming the “largest” number.
 
 
 Problem: CorporationSalary

@@ -6,12 +6,11 @@ using namespace std;
 
 class MatchNumbersEasy {
 public:
-    string maxNumber(vector <int> matches, int n)
- {
-    vector<string> dp(n + 1, "#");
+    string maxNumber(vector<int> matches, int n) {
+        vector<string> dp(n + 1, "#");
         dp[0] = "";
 
-       for (int i = 0; i <= n; i++) {
+        for (int i = 0; i <= n; i++) {
             if (dp[i] == "#") continue;
             for (int d = 0; d < (int)matches.size(); d++) {
                 int cost = matches[d];
@@ -22,16 +21,20 @@ public:
                 }
             }
         }
+
         string best = "";
         for (int i = 0; i <= n; i++) {
             if (dp[i] != "#" && isBigger(dp[i], best))
                 best = dp[i];
         }
-        sort(best.rbegin(), best.rend());
+
+        while (best.size() > 1 && best[0] == '0')
+            best.erase(best.begin());
+
         return best;
     }
 
-bool isBigger(const string &a, const string &b) {
+    bool isBigger(const string &a, const string &b) {
         if (a.size() != b.size()) return a.size() > b.size();
         return a > b;
     }
