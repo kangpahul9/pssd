@@ -28,6 +28,7 @@ public:
             if (dp[i] != "#" && isBigger(dp[i], best))
                 best = dp[i];
         }
+        if (best.empty()) return "0";
 
         while (best.size() > 1 && best[0] == '0')
             best.erase(best.begin());
