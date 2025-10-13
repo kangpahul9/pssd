@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include <string>
 using namespace std;
 
@@ -29,7 +30,7 @@ public:
         sort(best.rbegin(), best.rend());
         return best;
     }
-    
+
 bool isBigger(const string &a, const string &b) {
         if (a.size() != b.size()) return a.size() > b.size();
         return a > b;
