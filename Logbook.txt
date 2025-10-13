@@ -72,6 +72,6 @@ for (int i = matches.size() - 1; i >= 0; i--) {
 }
 
 Reflection:
-Originally, I didn’t copy left and currNum inside the loops, which caused incorrect results — previous states were being mutated, and later combinations were skipped.
-Adding local copies (tempLeft, tempNum) fixed that by resetting the match count and number for each new trial.
-I also changed the condition to >= (instead of >) so exact match usage is allowed.
+Originally, I used integer math (tempNum = tempNum * 10 + j), but that produced wrong results like "200" instead of "210".
+The problem was that numeric concatenation (*10 + j) doesn’t preserve digit order context and breaks for large or variable-length numbers.
+By converting everything to string operations, concatenation now works as true digit appending (tempNum += to_string(j)).
