@@ -7,27 +7,29 @@ class MatchNumbersEasy {
 public:
     string maxNumber(vector <int> matches, int n)
  {
-                string maxNum = "0";
+    vector<string> dp(n + 1, "#");
+        dp[0] = "";
 
-        for (int i = matches.size()-1; i >= 0; i--)
-        {
-            if (matches[i] > n) continue;
-            int left = n - matches[i];
-            string curr = to_string(i); 
-            for (int j = matches.size()-1; j >= 0; j--)
-            {
-                 int tempLeft = left;
-                string tempNum = curr;
-                while (tempLeft >= matches[j]) {
-                    tempNum += to_string(j);  
-                    tempLeft -= matches[j];
-                    if (isBigger(tempNum, maxNum))
-                        maxNum = tempNum;
+       for (int i = 0; i <= n; i++) {
+            if (dp[i] == "#") continue;
+            for (int d = 0; d < (int)matches.size(); d++) {
+                int cost = matches[d];
+                if (i + cost <= n) {
+                    string candidate = dp[i] + (char)('0' + d);
+                    if (dp[i + cost] == "#" || isBigger(candidate, dp[i + cost]))
+                        dp[i + cost] = candidate;
                 }
             }
         }
-        return maxNum;
+        string best = "";
+        for (int i = 0; i <= n; i++) {
+            if (dp[i] != "#" && isBigger(dp[i], best))
+                best = dp[i];
+        }
+        sort(best.rbegin(), best.rend());
+        return best;
     }
+    
 bool isBigger(const string &a, const string &b) {
         if (a.size() != b.size()) return a.size() > b.size();
         return a > b;
