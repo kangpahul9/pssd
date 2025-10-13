@@ -15,7 +15,7 @@ public:
             for (int d = 0; d < (int)matches.size(); d++) {
                 int cost = matches[d];
                 if (i + cost <= n) {
-                    if (dp[i].empty() && d == 0 && i + cost != 0) continue;
+                    if (dp[i].empty() && d == 0 && cost != n) continue;
                     string candidate = dp[i] + (char)('0' + d);
                     if (dp[i + cost] == "#" || isBigger(candidate, dp[i + cost]))
                         dp[i + cost] = candidate;
