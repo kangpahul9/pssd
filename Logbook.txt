@@ -1,0 +1,43 @@
+Problem: CatGame
+
+
+First Idea:
+We must minimize the possible span (difference between the farthest right and farthest left points) after such movements.
+
+Why it might work:
+Sorting the coordinates gives a natural left-to-right order. For any possible “split” index i, we can consider all points ≤ i moving right by X and all points > i moving left by X. We simply compute the resulting minimum and maximum positions for each case and record the smallest span.
+
+Try #1 (Sorted Sweep + Case Enumeration):
+
+Reflection:
+Checking all n+1 split points yields an O(n log n) solution (for sorting). The simplicity hides a powerful idea that complex continuous optimization problems can reduce to discrete boundary checks once symmetry is recognized.
+
+
+
+Problem: CellRemoval
+
+First Idea:
+The problem models a hierarchical tree of cells, where deleting one cell also deletes all of its descendants. After performing this deletion, we must count how many cells remain that are leaves (i.e., not deleted and having no remaining non-deleted children).
+
+Why it might work:
+Once we know which cells depend on which, deleting a cell and all of its descendants can be handled with a single depth-first traversal. After deletion, we simply check every surviving node to see if it has any surviving children; if none, it’s a leaf.
+
+Try #1 (Tree Traversal + Recursive Deletion):
+
+
+Reflection:
+The recursive deletion method dDelete ensures all descendants of the removed node are flagged efficiently.  The approach runs in O(n) and is conceptually clean. The main lesson is to treat hierarchical deletion as recursive propagation — once you remove a parent, its entire subtree is gone automatically.
+
+
+
+Problem: ErdosNumber
+
+First Idea:
+The structure is a graph: nodes are authors, and edges connect authors who have co-authored a paper.
+
+Why it might work:
+Once the graph is built, the problem becomes a shortest path search from “ERDOS” to every other author. Since all edges have equal weight (co-authorship connections), a Breadth-First Search (BFS) perfectly fits as it finds the minimum number of connections to reach each author efficiently.
+
+Try #1 (Graph Construction + BFS Traversal):
+Reflection:
+This solution neatly combines graph-building and traversal. Each publication connects authors pairwise, guaranteeing a complete collaboration network. BFS ensures minimal Erdos distances are computed correctly in O(V + E).

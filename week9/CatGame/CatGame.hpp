@@ -3,7 +3,11 @@
 #include <algorithm>
 #include <climits>
 using namespace std;
-int getNumber(vector<int> coordinates, int X) {
+
+class CatGame
+{
+public:
+    int getNumber(vector<int> coordinates, int X) {
     sort(coordinates.begin(), coordinates.end());
     int n = coordinates.size();
     int ans = INT_MAX;
@@ -30,3 +34,7 @@ int getNumber(vector<int> coordinates, int X) {
 
     return ans;
 }
+};
+
+
+
