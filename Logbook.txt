@@ -41,3 +41,35 @@ Once the graph is built, the problem becomes a shortest path search from “ERDO
 Try #1 (Graph Construction + BFS Traversal):
 Reflection:
 This solution neatly combines graph-building and traversal. Each publication connects authors pairwise, guaranteeing a complete collaboration network. BFS ensures minimal Erdos distances are computed correctly in O(V + E).
+
+
+Problem: CubeStickers
+
+First Idea:
+A sticker color can appear multiple times, but the same color can’t be reused more than twice on different faces because opposite sides can share the same color at most twice.
+
+Why it might work:
+We only care about how many distinct colors exist and how many colors appear at least twice.
+
+Try #1 (Counting Frequencies + Greedy Check):
+
+
+Reflection:
+This solution elegantly reduces the problem to counting as there is no need for complex combinations or recursion. The map structure naturally tracks color frequencies.
+
+
+
+Weekly Reflection
+
+This week covered a range of problems spanning geometry, recursion, graph traversal, and combinatorial logic, each emphasizing a different way of reasoning about structure and optimization.
+CatGame showed how continuous movement problems simplify into discrete boundary checks.
+CellRemoval demonstrated how recursion elegantly handles hierarchical deletions.
+ErdosNumber highlighted the use of BFS for shortest-path discovery in relational graphs.
+CubeStickers reinforced that simple frequency counting can replace complex combinatorial reasoning.
+
+
+What I Learned
+CatGame: Continuous optimization problems can often be solved by checking discrete boundaries after sorting.
+CellRemoval: Recursive propagation cleanly models cascading deletions in hierarchical structures.
+ErdosNumber: Breadth-First Search is the perfect fit for shortest unweighted distance in collaboration graphs.
+CubeStickers: Frequency counting and constraint logic can simplify combinatorial setup problems.
