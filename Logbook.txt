@@ -1,0 +1,41 @@
+Problem: DifferentStrings
+
+First Idea:
+Instead of performing literal insertions, we can view it as “sliding” the shorter string across the longer one to find the alignment that yields the fewest mismatched characters.
+
+Why it might work:
+Trying all valid offsets (from aligning the start to aligning the end) guarantees we’ll find the minimal difference. Sorting or backtracking isn’t needed, only pairwise comparisons for each possible alignment should be enough.
+
+Try #1 (Sliding Window + Character Comparison):
+
+Reflection:
+This approach transforms what appears to be a combinatorial problem into a simple linear sweep over all possible alignments. The key insight is that since operations can occur only at the ends, every possible final configuration corresponds to a discrete offset.
+
+
+Problem: BigBurger
+
+First Idea:
+Tracking the current free time and computing each customer’s waiting time directly models the real-world behavior.
+
+Why it might work:
+Updating currentTime after every service ensures dependencies are handled correctly without explicit queue data structures.
+
+Try #1 (Linear Simulation + Running Clock):
+
+Reflection:
+The biggest insight is how temporal dependencies can be efficiently handled through sequential updates rather than explicit event trees or queues.
+
+
+
+Problem: BridgeSort
+
+First Idea:
+Parsing the hand string into two-character codes allows easy grouping and sorting.
+
+Why it might work:
+Once the cards are separated by suits, sorting within each group using a custom comparator tied to value order ensures local order correctness. Concatenating the groups in global suit order yields the final sorted hand.
+
+Try #1 (Custom Sort + Concatenate):
+
+Reflection:
+First Try on gradescope.
