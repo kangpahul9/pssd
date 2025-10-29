@@ -39,3 +39,35 @@ Try #1 (Custom Sort + Concatenate):
 
 Reflection:
 First Try on gradescope.
+
+
+
+Problem: BlockEnemy
+
+First Idea:
+The core realization is that every edge cut in a tree cleanly separates it into two parts so if one side of an edge contains occupied towns and the other side also contains occupied towns, that edge must be destroyed.
+
+Why it might work:
+By performing a depth-first traversal, we can compute how many occupied towns lie in each subtree. If both sides of an edge contain at least one occupied town, we mark that edge for destruction and add its cost.
+
+Try #1 (Tree Construction + DFS Propagation):
+
+Reflection:
+The beauty lies in how a seemingly global optimization (“disconnect all occupied towns”) reduces to a local check during recursion. Each edge independently decides whether it needs to be destroyed, based on simple subtree counts. The structure of the tree ensures there are no cycles or redundant decisions.
+
+
+Weekly Reflection :
+This week brought together string matching, simulation, sorting, and graph reasoning.
+
+DifferentStrings showed how a seemingly combinatorial modification task simplifies to discrete alignment checks.
+BigBurger demonstrated how time dependencies can be simulated linearly with a running variable.
+BridgeSort reinforced categorical and hierarchical sorting through structured grouping.
+BlockEnemy revealed how global disconnection problems reduce to local decisions when framed as DFS propagation on a tree.
+
+
+What I Learned :
+
+DifferentStrings: Continuous edits can often be replaced by discrete sliding comparisons.
+BigBurger: Sequential time tracking models queues efficiently without explicit data structures.
+BridgeSort: Hierarchical sorting by suit and value clarifies multi-key ordering.
+BlockEnemy: Recursive subtree counting transforms a complex global separation into simple local edge cuts.
