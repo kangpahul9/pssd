@@ -13,24 +13,21 @@ public:
     vector<int>occupied;
     int totalOccupied;
     int ans;
-    int dfs(int node, int parent){
+    int dfs(int node, int parent) {
         int count = occupied[node];
         for (auto [nei, cost] : adj[node]) {
             if (nei == parent) continue;
             int sub = dfs(nei, node);
-
-            if (sub > 0) {
-                if (count > 0) {
-                    ans += cost;     
-                } else {
-                    count += sub;   
-                }
+            if (sub > 0 && sub < totalOccupied) {
+                ans += cost;
             }
+            count += sub;
         }
         return count;
     }
    	int minEffort(int N, vector<string> roads, vector <int> occupiedTowns){
         this->N=N;
+        ans = 0; 
         adj.assign(N,{});
         occupied.assign(N,0);
         for (int t : occupiedTowns)
