@@ -16,11 +16,16 @@ public:
     int dfs(int node, int parent){
         int count = occupied[node];
         for (auto [nei, cost] : adj[node]) {
-        if (nei == parent) continue;
-        int sub = dfs(nei, node);
-        if (sub > 0 && totalOccupied - sub > 0)
-            ans += cost;
-        count += sub;
+            if (nei == parent) continue;
+            int sub = dfs(nei, node);
+
+            if (sub > 0) {
+                if (count > 0) {
+                    ans += cost;     
+                } else {
+                    count += sub;   
+                }
+            }
         }
         return count;
     }
