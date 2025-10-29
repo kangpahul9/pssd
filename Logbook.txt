@@ -41,19 +41,32 @@ Reflection:
 First Try on gradescope.
 
 
-
-Problem: BlockEnemy
+Problem: LostParentheses
 
 First Idea:
-The core realization is that every edge cut in a tree cleanly separates it into two parts so if one side of an edge contains occupied towns and the other side also contains occupied towns, that edge must be destroyed.
+To minimize the final result, the expression should group all terms after the first ‘−’ into one large subtraction block.
 
 Why it might work:
-By performing a depth-first traversal, we can compute how many occupied towns lie in each subtree. If both sides of an edge contain at least one occupied town, we mark that edge for destruction and add its cost.
+Splitting the expression at ‘−’ and summing each part separately directly simulates this rule.
 
-Try #1 (Tree Construction + DFS Propagation):
+Try #1 (String Splitting + Aggregation):
+Reflection:
+The insight is that although parentheses could appear in many ways, only one structural decision matters: where the first minus occurs.
+
+
+Problem: HandsShaking
+
+First Idea:
+Recognizing that these subdivisions mirror the recursive structure of the Catalan sequence allows us to count non-crossing handshake patterns efficiently.
+
+Why it might work:
+The total number of perfect configurations is therefore the product of the counts from both sides, summed across all possible initial pairs.
+
+Try #1 (Dynamic Programming Recurrence):
 
 Reflection:
-The beauty lies in how a seemingly global optimization (“disconnect all occupied towns”) reduces to a local check during recursion. Each edge independently decides whether it needs to be destroyed, based on simple subtree counts. The structure of the tree ensures there are no cycles or redundant decisions.
+The major breakthrough was realizing that the geometry of non-crossing chords corresponds exactly to the combinatorial Catalan structure.
+
 
 
 Weekly Reflection :
@@ -62,12 +75,13 @@ This week brought together string matching, simulation, sorting, and graph reaso
 DifferentStrings showed how a seemingly combinatorial modification task simplifies to discrete alignment checks.
 BigBurger demonstrated how time dependencies can be simulated linearly with a running variable.
 BridgeSort reinforced categorical and hierarchical sorting through structured grouping.
-BlockEnemy revealed how global disconnection problems reduce to local decisions when framed as DFS propagation on a tree.
-
+LostParentheses extended the theme of simplifying seemingly combinatorial problems.
+In HandsShaking, identifying that every handshake divides the circle into independent subproblems, I transformed a potentially exponential search into an elegant dynamic programming formulation.
 
 What I Learned :
 
 DifferentStrings: Continuous edits can often be replaced by discrete sliding comparisons.
 BigBurger: Sequential time tracking models queues efficiently without explicit data structures.
 BridgeSort: Hierarchical sorting by suit and value clarifies multi-key ordering.
-BlockEnemy: Recursive subtree counting transforms a complex global separation into simple local edge cuts.
+LostParentheses: Parentheses optimization can reduce to partitioning logic instead of exhaustive search
+HandsShaking: Recognizing symmetry and recursion in visual setups simplifies reasoning and computation.
